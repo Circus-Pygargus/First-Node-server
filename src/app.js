@@ -11,7 +11,7 @@ const hbs = require ('hbs')
 const geocode = require('../src/utils/geocode')
 // will give weather forecast back when given latitude and longitude
 const forecast = require('../src/utils/weatherForecast')
-const beaMessage = require('../src/utils/messageForBea')
+// const beaMessage = require('../src/utils/messageForBea')
 
 // we want to be able to use express
 const app = express()
@@ -107,13 +107,13 @@ app.get('/weather', (req, res) => {
 })
 
 // spécial route for Béa
-app.get('/bea', (req, res) => {
-    res.render('bea', {
-        title: `Béa's Special Page`,
-        author: 'VioK Circus Pygargus',
-        specialMessage: beaMessage()
-    })
-})
+// app.get('/bea', (req, res) => {
+//     res.render('bea', {
+//         title: `Béa's Special Page`,
+//         author: 'VioK Circus Pygargus',
+//         specialMessage: beaMessage()
+//     })
+// })
 
 app.get('/help/*', (req, res) => {
     res.render('404', {
