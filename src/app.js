@@ -117,7 +117,7 @@ app.get('/weather', (req, res) => {
 
 app.get('/help/*', (req, res) => {
     res.render('404', {
-        title: 'Weather app',
+        title: 'Help section',
         author: 'VioK Circus Pygargus',
         message404: 'Help article not found !'
     })
@@ -126,7 +126,7 @@ app.get('/help/*', (req, res) => {
 // Gestion 404, attention !!! toujours mettre en dernier des app.get()
 app.get('*', (req, res) => {
     res.render('404', {
-        title: 'Help section',
+        title: 'Weather app',
         author: 'VioK Circus Pygargus',
         message404: 'Page not found !'
     })
