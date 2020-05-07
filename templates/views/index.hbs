@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Météo</title>
+
+    <link rel="icon" href="/img/weather-app/weather-ico2.gif">
+
+    <link rel="stylesheet" href="/css/style.css">
+    
+</head>
+<body>
+
+    {{>header}}
+
+    <main>
+        <p>Utilise ce champ pour avoir ta météo.</p>
+
+        <form>
+            <input type="text" placeholder="Lieu">
+            <button type="submit">Search</button>
+        </form>
+
+        <p id="message-1"></p>
+        <p id="message-2"></p>
+
+    </main> 
+
+    {{>footer}}
+
+    <script src="/js/app.js"></script>
+
+</body>
+</html>

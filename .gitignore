@@ -1,0 +1,5 @@
+node_modules/
+public/img/bea/
+src/utils/messageForBea.js
+templates/views/bea.hbs
+Dones.txt
