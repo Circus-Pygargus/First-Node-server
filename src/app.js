@@ -18,8 +18,8 @@ const app = express()
 
 // the server is shared in local network
 const hostname = '10.0.0.115'
-// server port to use
-const port = 3000
+// server port to use (given by Heroku or 3000 if locally)
+const port = process.env.PORT || 3000
 
 /* Define paths for express config */
 // build the public path from absolute path : __dirname
