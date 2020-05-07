@@ -133,6 +133,6 @@ app.get('*', (req, res) => {
 })
  
 // Ici on appelle un listener sur le port qui permettra de logguer de nombreuses infos
-app.listen(port, hostname, () => {
-    console.log(`Server is up at ${hostname}:${port} !`)
+app.listen(port, () => {
+    console.log(`Server is up on port ${port} !`)
 })
