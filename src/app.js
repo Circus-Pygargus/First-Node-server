@@ -63,7 +63,7 @@ app.get('/help', (req, res) => {
     res.render('help', {
         title: 'Help Page',
         author: 'VioK Circus Pygargus',
-        helpMessage: `Message d'aide fictif pour les tests !`
+        helpMessage: `Centre d'aide, vide pour le moment.`
     })
 })
 
