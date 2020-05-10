@@ -3,7 +3,7 @@ const superagent = require('superagent');
 
 
 const geocode = (address, callback) => {
-    const url = `https://api.mapbox.com/geocoding/v5/mapbox.places/${address}.json?limit=5&access_token=pk.eyJ1IjoiY2lyY3VzLXB5Z2FyZ3VzIiwiYSI6ImNrOW9obWxxZDAwcG0zaHBuYmpiaGp3M2QifQ.SQW3CbywUtgoGGQxyiv6dQ`;
+    const url = `https://api.mapbox.com/geocoding/v5/mapbox.places/${address}.json?limit=10&access_token=pk.eyJ1IjoiY2lyY3VzLXB5Z2FyZ3VzIiwiYSI6ImNrOW9obWxxZDAwcG0zaHBuYmpiaGp3M2QifQ.SQW3CbywUtgoGGQxyiv6dQ`;
 
     
     superagent
@@ -37,13 +37,26 @@ const geocode = (address, callback) => {
 			});
 			
             if (!flag) {
-                // A changer par: voici la liste des villes ressemblant à votre recherche, merci de choisir celle que vous désirez ou refaites une recherche            
-				callback(undefined, {
-					msg: 'Adresse exacte non trouvée, on prend la première !',
-					placeName: body.features[0].place_name,
-					lon: body.features[0].center[0],
-					lat: body.features[0].center[1]
+                // A changer par: voici la liste des villes ressemblant à votre recherche, merci de choisir celle que vous désirez ou refaites une recherche
+				let places = []
+				for (let i = 0; i < body.features.length; i++) {
+					places[i] = {}
+					places[i].placeName = body.features[i].place_name
+					places[i].lon = body.features[i].center[0]
+					places[i].lat = body.features[i].center[1]
+				}
+
+				callback (undefined, {
+					msg: 'Adresse exacte non trouvée ! Choisis parmi ces possibilités ou relance une recherche !',
+					places: places
 				})
+
+				// callback(undefined, {
+				// 	msg: 'Adresse exacte non trouvée, on prend la première !',
+				// 	placeName: body.features[0].place_name,
+				// 	lon: body.features[0].center[0],
+				// 	lat: body.features[0].center[1]
+				// })
             }
         }
     })

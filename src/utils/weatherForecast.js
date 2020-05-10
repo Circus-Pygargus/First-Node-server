@@ -22,9 +22,10 @@ const weatherForecast = (latitude, longitude, callback) => {
         // No error, we got some result
         else {  
             // ici on veut récupérer la partie current de l'objet body
-			// const current = body.current;
-			const { current } = body;
-            callback(undefined, `Temps: ${current.weather[0].description}. Il fait actuellement ${current.temp} degrés, resenti ${current.feels_like} degrés, le taux d'humidité est de ${current.humidity}%.`);
+            // const current = body.current;
+            // const { current } = body;
+            // callback(undefined, `Temps: ${current.weather[0].description}. Il fait actuellement ${current.temp} degrés, resenti ${current.feels_like} degrés, le taux d'humidité est de ${current.humidity}%.`);
+            callback(undefined, body);
         }
     });
 };

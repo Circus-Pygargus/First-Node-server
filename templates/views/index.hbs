@@ -13,18 +13,21 @@
 </head>
 <body>
 
+    {{!-- localization form for weather is inside header --}}
     {{>header}}
 
     <main>
-        <p>Utilise ce champ pour avoir ta météo.</p>
 
-        <form>
-            <input type="text" placeholder="Lieu">
-            <button type="submit">Search</button>
-        </form>
+        <section id="error-section">
+            <p id="message-1"></p>
+            <p id="message-2"></p>
+        </section>
 
-        <p id="message-1"></p>
-        <p id="message-2"></p>
+        <section id="weather-section">
+            {{#if weatherData}}
+                {{>weather}}
+            {{/if}}
+        </section>
 
     </main> 
 

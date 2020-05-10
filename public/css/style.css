@@ -11,6 +11,9 @@ body {
 }
 
 header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     margin-top: 16px;
     margin-bottom: 48px;
 }
@@ -22,6 +25,9 @@ header nav a {
     color: #888888;
     margin-right: 16px;
     text-decoration: none;
+}
+header div:last-child {
+    align-self: flex-end;
 }
 
 main {
@@ -62,4 +68,31 @@ p#message-404{
     font-size: 50px;
     text-align: center;
     margin: 20px auto 30px;
+}
+.hidden {
+    display: none;
+
+}
+#weather-places-div p {
+    font-size: 22px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+#weather-places {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#weather-places div {
+    margin-bottom: 16px;
+    padding: 16px;
+    border: 1px solid #cccccc;
+    cursor: pointer;
+}
+#weather-places div:hover {
+    border-color: #555555
+}
+#weather-places div.chosen {
+    background-color: #333333;
+    color: #cccccc;
 }

@@ -1,0 +1,10 @@
+<div id="weather-places-div">
+
+    <p>{{msg}}</p>
+
+    <div id="weather-places">
+        {{#each places}}
+            <div data-lat="{{this.lat}}" data-lon="{{this.lon}}">{{this.placeName}}</div>
+        {{/each}}
+    </div>
+</div>

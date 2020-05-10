@@ -69,26 +69,85 @@ app.get('/help', (req, res) => {
 
 // route for weather
 app.get('/weather', (req, res) => {
-    if(!req.query.address) {
-        return res.send({
-            error: 'Il faut entrer une adresse !'
-        })
-    }
-    
-    // Ici on récupère les propriétés de l'objet data et on les attribute à des variables du même nom
-    // évitant ainsi d'écrire plus loin: data.lat, data.lon ...
-    // on aurait pu inclure cette ligne dans l'appel de geocode, mais on va faire autrement :
-    // geocode(command, (error, data) => {
-    // const {lat, lon, msg, placeName} = data;
-    geocode(req.query.address, (error, { lat, lon, msg, placeName } = {}) => {
-        if (error) {
+    // User haven't clicked on a possible place
+    if (!req.query.place) {
+        // Then he must have written a town name
+        if(!req.query.address) {
             return res.send({
-                // ici je pourrais écrire juste error (racourci ES6 la propriété a le même nom que la variable)
-                error: error
+                error: 'Il faut entrer une adresse !'
             })
-        }    
-        // Grâce au return dans le if ci-dessus, on quittera geocode si erreur, donc pas besoin de if (data) pour ce qui suit =)
+        }
+        
+        // Ici on récupère les propriétés de l'objet data et on les attribute à des variables du même nom
+        // évitant ainsi d'écrire plus loin: data.lat, data.lon ...
+        // on aurait pu inclure cette ligne dans l'appel de geocode, mais on va faire autrement :
+        // geocode(command, (error, data) => {
+        // const {lat, lon, msg, placeName} = data;
+        geocode(req.query.address, (error, { lat, lon, msg, placeName, places } = {}) => {
+            if (error) {
+                return res.send({
+                    // ici je pourrais écrire juste error (racourci ES6 la propriété a le même nom que la variable)
+                    error: error
+                })
+            }    
+            // Grâce au return dans le if ci-dessus, on quittera geocode si erreur, donc pas besoin de if (data) pour ce qui suit =)
+    console.log('msg', msg)
+            // Ici plusieurs adresses trouvées, on les renvoie toutes au navigateur
+            if (msg === 'Adresse exacte non trouvée ! Choisis parmi ces possibilités ou relance une recherche !') {
+    console.log('un')
+                app.render(`${partialsPath}/weatherPlaces`, {msg, places, layout: false}, (err, html) => {
+                    if (err) {
+                        return res.send({
+                            error: 'Une erreur est survenue pendant le rendu de la liste des lieux possibles.'
+                        })
+                    }
 
+                    res.send({
+                        status: 'places choice',
+                        html: html
+                    })
+                })
+            }
+            // Le lieu corrspondant à la recherche a été trouvé directement, on va chercher les prévisions
+            else if (msg === 'Adresse trouvée !') {
+    console.log('deux')
+                forecast(lat, lon, (error, forecastData) => {
+                    if (error) {
+                        return res.send({
+                            error: error
+                        })
+                    }
+                    
+                    // will read here only if no error (because of return)
+
+                    const forecast = forecastData
+                    forecast.location = placeName
+                    // console.log(forecastData)
+
+                    app.render(`${partialsPath}/weather`, {layout: false, location: placeName}, (err, html) => {
+                        if (err) {
+                            return res.send({
+                                error: 'Une erreur est survennue durant le rendu de la réponse.'
+                            })
+                        }
+                        // let weatherData = {
+                        //     addressRequest: req.query.address,
+                        //     location: placeName,
+                        //     forecast: forecastData,
+                        //     weatherHTML: html
+                        // }
+                        res.send({
+                            html: html
+                        })
+                    })
+                });
+            }
+            console.log('trois')
+        });
+    }
+    // User has clicked on a selectable location
+    else {
+        const {place:placeName, lat, lon} = req.query
         forecast(lat, lon, (error, forecastData) => {
             if (error) {
                 return res.send({
@@ -97,13 +156,30 @@ app.get('/weather', (req, res) => {
             }
             
             // will read here only if no error (because of return)
-            res.send({
-                addressRequest: req.query.address,
-                location: placeName,
-                forecast: forecastData
+
+            const forecast = forecastData
+            forecast.location = placeName
+            // console.log(forecastData)
+
+            app.render(`${partialsPath}/weather`, {layout: false, location: placeName}, (err, html) => {
+                if (err) {
+                    console.log('err', err)
+                    return res.send({
+                        error: 'Une erreur est survennue durant le rendu de la réponse.'
+                    })
+                }
+                // let weatherData = {
+                //     addressRequest: req.query.address,
+                //     location: placeName,
+                //     forecast: forecastData,
+                //     weatherHTML: html
+                // }
+                res.send({
+                    html: html
+                })
             })
         });
-    });
+    }
 })
 
 // spécial route for Béa
