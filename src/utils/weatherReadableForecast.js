@@ -11,9 +11,6 @@ const readableForecast = (data) => {
     var dateTZ = timeZoneDate(data.timezone, data.current.dt * 1000)
     var forecast = {}
     /* current part */
-// const dir = getWindDirection(data.current.wind_deg)
-// console.log('direction', dir)
-// console.log('test direction', getWindDirection(data.current.wind_deg))
     forecast.current = {
         dayName: weekDayNames[dateTZ.getDay()],
         dayNb: dateTZ.getDate(),
@@ -25,8 +22,6 @@ const readableForecast = (data) => {
         wind_speed: convertWindSpeed(data.current.wind_speed),  // We want some km/h
         wind_direction: getWindDirection(data.current.wind_deg),
         weather: getWeatherDescriptions(data.current.weather),
-        // description: data.current.weather[0].description,
-        // picture: getPictureName(data.current.weather[0].id)
     }
     /* hourly part */
     forecast.hourly = []
@@ -46,34 +41,10 @@ const readableForecast = (data) => {
 
             wind_speed: convertWindSpeed(data.hourly[i].wind_speed),
             wind_direction: getWindDirection(data.hourly[i].wind_deg),
-
             
             weather: getWeatherDescriptions(data.current.weather),
-
-            // description: data.hourly[i].weather[0].description,
-            // picture: getPictureName(data.hourly[i].weather[0].id)
-
         }
     }
-    
-// response.body.hourly[0] = {
-//     dt: 1589108400,
-//     temp: 20.56,
-//     feels_like: 19.54,
-//     pressure: 1008,
-//     humidity: 50,
-//     dew_point: 9.79,
-//     clouds: 43,
-//     wind_speed: 1.43,
-//     wind_deg: 282,
-//     weather: [
-//       { id: 500, main: 'Rain', description: 'légère pluie', icon: '10d' }
-//     ],
-//     rain: { '1h': 0.23 }
-//   }
-
-
-
     /* daily part */
     forecast.daily = []
     for (let i = 0; i < data.daily.length; i++) {
@@ -103,45 +74,10 @@ const readableForecast = (data) => {
             wind_direction: getWindDirection(data.daily[i].wind_deg),
             
             weather: getWeatherDescriptions(data.current.weather),
-
-            // description: data.daily[i].weather[0].description,
-            // picture: getPictureName(data.daily[i].weather[0].id)
         }
     }
-
-
-// console.log(new Date(data.current.dt*1000))   
-
-// timeZoneDate(data.timezone, data.current.dt)
-
-console.log(forecast)
-
     return forecast
 }
-
-
-// response.body.daily[0] = {
-//     dt: 1588503600,           ???
-//     sunrise: 1588479244,      yes
-//     sunset: 1588531692,          yes
-//     temp: {
-//       day: 12.22,         yes
-//       min: 10.72,         yes
-//       max: 12.22,      yes
-//       night: 10.72,      yes
-//       eve: 12.22,
-//       morn: 12.22
-//     },
-//     feels_like: { day: 11.16, night: 9.29, eve: 11.16, morn: 11.16 },   yes
-//     pressure: 1020,
-//     humidity: 82,      yes
-//     dew_point: 9.24,
-//     wind_speed: 1.29,      yes
-//     wind_deg: 191,      yes
-//     weather: [ { id: 804, main: 'Clouds', description: 'couvert', icon: '04n' } ],      yes
-//     clouds: 94,      yes
-//     uvi: 7.05
-//   }
 
 
 /**
@@ -163,6 +99,7 @@ const timeZoneDate = (timezone, apiDate) => {
 }
 
 /**
+ * Get weather descriptions
  * 
  * @param {{string, int}[]} weather 
  */
