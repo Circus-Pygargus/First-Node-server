@@ -95,6 +95,7 @@ app.get('/weather', (req, res) => {
             // Ici plusieurs adresses trouvées, on les renvoie toutes au navigateur
             if (msg === 'Adresse exacte non trouvée ! Choisis parmi ces possibilités ou relance une recherche !') {
     console.log('un')
+    
                 app.render(`${partialsPath}/weatherPlaces`, {msg, places, layout: false}, (err, html) => {
                     if (err) {
                         return res.send({
@@ -116,8 +117,7 @@ app.get('/weather', (req, res) => {
                         return res.send({
                             error: error
                         })
-                    }
-                    
+                    }      
                     // will read here only if no error (because of return)
 
                     const forecast = forecastData
@@ -157,8 +157,9 @@ app.get('/weather', (req, res) => {
             
             // will read here only if no error (because of return)
 
-            const forecast = forecastData
-            forecast.location = placeName
+//  console.log('forecastData', forecastData.hourly[0])          
+            // const forecast = forecastData
+            // forecast.location = placeName
             // console.log(forecastData)
 
             app.render(`${partialsPath}/weather`, {layout: false, location: placeName}, (err, html) => {

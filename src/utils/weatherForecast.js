@@ -1,5 +1,7 @@
 const superagent = require ('superagent');
 
+const readableForecast  = require ('../utils/weatherReadableForecast');
+
 const weatherForecast = (latitude, longitude, callback) => {
     const url = `http://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&appid=c2ed6840f7d2c94dd3f33ea785249525&units=metric&lang=fr`;
     
@@ -25,7 +27,11 @@ const weatherForecast = (latitude, longitude, callback) => {
             // const current = body.current;
             // const { current } = body;
             // callback(undefined, `Temps: ${current.weather[0].description}. Il fait actuellement ${current.temp} degrés, resenti ${current.feels_like} degrés, le taux d'humidité est de ${current.humidity}%.`);
-            callback(undefined, body);
+            console.log('pre dt');
+            const myForecast = readableForecast(body)
+            console.log('post dt');
+            // callback(undefined, body);
+            callback(undefined, readableForecast);
         }
     });
 };
@@ -84,6 +90,23 @@ response.body.daily[0] = {
   weather: [ { id: 804, main: 'Clouds', description: 'couvert', icon: '04n' } ],
   clouds: 94,
   uvi: 7.05
+}
+
+
+response.body.hourly[0] = {
+  dt: 1589108400,
+  temp: 20.56,
+  feels_like: 19.54,
+  pressure: 1008,
+  humidity: 50,
+  dew_point: 9.79,
+  clouds: 43,
+  wind_speed: 1.43,
+  wind_deg: 282,
+  weather: [
+    { id: 500, main: 'Rain', description: 'légère pluie', icon: '10d' }
+  ],
+  rain: { '1h': 0.23 }
 }
 
 
