@@ -1,104 +1,199 @@
-body {
-    color: #333333;
-    font-family: arial;
-    max-width: 650px;
-    margin: 0 auto;
-    padding: 0 16px;
+/* mixins */
+/* ############## Fonts ############## */
+@font-face {
+  font-family: 'galyon';
+  src: url("/fonts/Galyon-Regular.otf");
+}
 
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+@font-face {
+  font-family: 'galyon-italic';
+  src: url("/fonts/Galyon-Italic.otf");
+}
+
+@font-face {
+  font-family: 'galyon-bold';
+  src: url("/fonts/Galyon-Bold.otf");
+}
+
+/* base */
+/*  - importing  vars */
+/* - code */
+:root {
+  --color-viok: #FF8800;
+  --color-main: #333333;
+  --color-green: #26ff00;
+  --color-places-background: #f9f9f9;
+  --color-places-color: #0a0a0a;
+  --color-places-border: #cacaca;
+  --color-places-hover-border: #555555;
+  --color-places-chosen-background: #333333;
+  --color-places-chosen-color: #cccccc;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+}
+
+body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+  min-height: 100vh;
+  font-family: 'galyon';
+  color: var(--color-main);
+}
+
+@media screen and (min-width: 576px) {
+  body {
+    color: var(--color-viok);
+  }
 }
 
 header {
+  margin-top: 16px;
+  margin-bottom: 24px;
+}
+
+@media screen and (min-width: 576px) {
+  header {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 16px;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  header {
+    margin-bottom: 36px;
+  }
+}
+
+@media screen and (min-width: 992px) and (max-width: 1199px) {
+  header {
+    margin-top: 22px;
     margin-bottom: 48px;
+  }
 }
+
 header h1 {
-    font-size: 64px;
+  text-align: center;
+  font-family: 'galyon-bold';
+  font-size: 3rem;
+}
+
+@media screen and (min-width: 576px) {
+  header h1 {
     margin-bottom: 16px;
+  }
 }
+
+header nav {
+  text-align: center;
+}
+
 header nav a {
-    color: #888888;
-    margin-right: 16px;
-    text-decoration: none;
+  color: #888888;
+  margin-right: 16px;
+  text-decoration: none;
 }
-header div:last-child {
-    align-self: flex-end;
+
+header #weather-search {
+  text-align: center;
+  margin-top: 16px;
+}
+
+@media screen and (min-width: 576px) {
+  header #weather-search {
+    -ms-flex-item-align: end;
+        align-self: flex-end;
+  }
+}
+
+header #weather-search input {
+  border: 1px solid #cccccc;
+  margin-top: 12px;
+  padding: 8px;
+}
+
+header #weather-search button {
+  cursor: pointer;
+  background-color: #888888;
+  border: 1px solid #888888;
+  color: white;
+  padding: 8px;
 }
 
 main {
-    flex-grow: 1;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
 }
 
-input {
-    border: 1px solid #cccccc;
-    padding: 8px;
-}
-
-button {
-    cursor: pointer;
-    background-color: #888888;
-    border: 1px solid #888888;
-    color: white;
-    padding: 8px;
-}
-
-img.portrait {
-    width: 260px;
-    height: 330px;
+main #weather-section {
+  text-align: center;
 }
 
 footer {
-    color: #888888;
-    border-top: 1px solid #eeeeee;
-    margin-top: 16px;
-    padding: 16px 0;
+  color: #888888;
+  border-top: 1px solid #eeeeee;
+  margin-top: 16px;
+  padding: 16px 16px;
 }
 
-p#err-404 {
-    font-size: 100px;
-    text-align: center;
-    margin: 40px auto 30px;
-}
-p#message-404{
-    font-size: 50px;
-    text-align: center;
-    margin: 20px auto 30px;
-}
-.hidden {
-    display: none;
-
-}
-
-#weather-section {
-    text-align: center;
-}
+/* When user have to choose a location */
 #weather-places-div p {
-    font-size: 22px;
-    margin-bottom: 20px;
-    text-align: center;
+  font-size: 22px;
+  margin-bottom: 20px;
+  text-align: center;
 }
-#weather-places {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+
+#weather-places-div #weather-places {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
-#weather-places div {
-    margin-bottom: 16px;
-    padding: 16px;
-    background-color: #f9f9f9;
-    color: #0a0a0a;
-    border: 1px solid #cacaca;
-    cursor: pointer;
+
+#weather-places-div #weather-places div {
+  margin-bottom: 16px;
+  padding: 16px;
+  background-color: var(--color-places-background);
+  color: var(--color-places-color);
+  border: 1px solid var(--color-places-border);
+  cursor: pointer;
 }
-#weather-places div:hover {
-    border-color: #555555
+
+#weather-places-div #weather-places div:hover {
+  border-color: var(--color-places-hover-border);
 }
-#weather-places div.chosen {
-    background-color: #333333;
-    color: #cccccc;
+
+#weather-places-div #weather-places div.chosen {
+  background-color: var(--color-places-chosen-background);
+  color: var(--color-places-chosen-color);
 }
+
+/* current */
+h2 {
+  font-family: 'galyon-bold';
+  color: var(--color-green);
+  text-align: center;
+}
+/*# sourceMappingURL=style.css.map */

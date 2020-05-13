@@ -13,6 +13,9 @@ const geocode = require('../src/utils/geocode')
 const forecast = require('../src/utils/weatherForecast')
 // const beaMessage = require('../src/utils/messageForBea')
 
+// just for dev
+const manageForecast = require('../src/utils/manageForecasts')
+
 // we want to be able to use express
 const app = express()
 
@@ -45,10 +48,19 @@ app.use(express.static(publicDirectoryPath))
 
 // création d'une route pour '' car on veut appeller une vue
 app.get('', (req, res) => {
-    // envoie un rendu du template /views/index.hbs
+    // // envoie un rendu du template /views/index.hbs
+    // res.render('index', {
+    //     title: 'Météo',
+    //     author: 'VioK Circus Pygargus',
+    //     weatherSearch: true
+    // })
+    const savedForecast = manageForecast.load()
+    const {location, current, hourly, daily} = savedForecast
     res.render('index', {
-        title: 'Weather',
-        author: 'VioK Circus Pygargus'
+        location, current, hourly, daily,
+        title: 'Météo',
+        author: 'VioK Circus Pygargus',
+        weatherSearch: true
     })
 })
 
@@ -120,11 +132,10 @@ app.get('/weather', (req, res) => {
                     }      
                     // will read here only if no error (because of return)
 
-                    const forecast = forecastData
-                    forecast.location = placeName
-                    // console.log(forecastData)
+                    // const forecast = forecastData
+                    // forecast.location = placeName
 
-                    app.render(`${partialsPath}/weather`, {layout: false, location: placeName}, (err, html) => {
+                    app.render(`${partialsPath}/weather`, {layout: false, location: placeName, forecast: forecastData}, (err, html) => {
                         if (err) {
                             return res.send({
                                 error: 'Une erreur est survennue durant le rendu de la réponse.'
@@ -162,7 +173,13 @@ app.get('/weather', (req, res) => {
             // forecast.location = placeName
             // console.log(forecastData)
 
-            app.render(`${partialsPath}/weather`, {layout: false, location: placeName}, (err, html) => {
+    // console.log('forecastData', forecastData)
+            const {current, daily, hourly} = forecastData
+
+const forecastToSave = {location: placeName, current, daily, hourly}
+manageForecast.save(forecastToSave)
+            
+            app.render(`${partialsPath}/weather`, {layout: false, location: placeName, current, daily, hourly}, (err, html) => {
                 if (err) {
                     console.log('err', err)
                     return res.send({

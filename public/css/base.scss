@@ -1,0 +1,133 @@
+/* base */
+/*  - importing  vars */
+// @import 'weather-variables'; 
+
+
+// $color-viok: #FF8800;
+// $color-main: #333333;
+// $color-green: rgb(38, 255, 0);
+// @import 'mixins';
+/* - code */
+:root {
+    --color-viok: #{$color-viok};
+    --color-main: #{$color-main};
+    --color-green: #{$color-green};
+    
+    // weather-places-choice.scss colors
+    --color-places-background: #{$color-places-background};
+    --color-places-color: #{$color-places-color};
+    --color-places-border: #{$color-places-border};
+    --color-places-hover-border: #{$color-places-hover-border};
+    --color-places-chosen-background: #{$color-places-chosen-background};
+    --color-places-chosen-color: #{$color-places-chosen-color};
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+}
+
+
+body {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-height: 100vh;
+    font-family: 'galyon';
+    color: var(--color-main);
+    // @include landscapephone
+    // @include landscapephoneAndBigger 
+    // @include tablet
+    // @include desktop
+    // @include xldesktop 
+    @include landscapephoneAndBigger {
+        color:var(--color-viok);
+    }
+}
+
+
+header {
+    margin-top: 16px;
+    margin-bottom: 24px;
+    
+    @include landscapephoneAndBigger {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        
+        // contains the weather form
+        // div:last-child {
+    }
+    @include tablet {
+        margin-bottom: 36px;
+    }
+    @include desktop {
+        margin-top: 22px;
+        margin-bottom: 48px;
+    }
+
+    h1 {
+        text-align: center;
+        font-family: 'galyon-bold';
+        font-size: 3rem;
+
+        @include landscapephoneAndBigger {
+            margin-bottom: 16px;
+        }
+    }
+    
+    nav {
+        text-align: center;
+
+        a {
+            color: #888888;
+            margin-right: 16px;
+            text-decoration: none;
+        }
+    }
+
+    #weather-search {
+        text-align: center;
+        margin-top: 16px;
+
+        @include landscapephoneAndBigger {
+            align-self: flex-end;
+        }
+
+        input {
+            border: 1px solid #cccccc;
+            margin-top: 12px;
+            padding: 8px;
+        }
+        
+        button {
+            cursor: pointer;
+            background-color: #888888;
+            border: 1px solid #888888;
+            color: white;
+            padding: 8px;
+        }
+    }
+
+    // &.weather-form-included {
+    // }
+}
+
+
+main {
+    flex-grow: 1;
+    
+    #weather-section {
+        text-align: center;
+    }
+}
+
+
+footer {
+    color: #888888;
+    border-top: 1px solid #eeeeee;
+    margin-top: 16px;
+    padding: 16px 16px;
+}

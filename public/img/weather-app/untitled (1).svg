@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid meet" viewBox="0 0 640 640" width="640" height="640">
+    <defs>
+        <path d="M495.17 553.45C410.26 465.03 344.36 420.54 297.47 419.98C254.18 419.46 186.77 461.62 95.23 546.47L304.8 0.04L495.17 553.45Z" id="abB2qeAAM"></path>
+        <linearGradient id="gradientc38FnkOhaC" gradientUnits="userSpaceOnUse" x1="308.46" y1="-209.93" x2="299.27" y2="418.15">
+            <stop style="stop-color: #d5d5d5;stop-opacity: 1" offset="0%"></stop>
+            <stop style="stop-color: #010000;stop-opacity: 1" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    
+    <g>
+        <g>
+            <g>
+                <use xlink:href="#abB2qeAAM" opacity="1" fill="url(#gradientc38FnkOhaC)"></use>
+                <g>
+                    <use xlink:href="#abB2qeAAM" opacity="1" fill-opacity="0" stroke="#000000" stroke-width="1" stroke-opacity="1"></use>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

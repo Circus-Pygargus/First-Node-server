@@ -28,10 +28,10 @@ const weatherForecast = (latitude, longitude, callback) => {
             // const { current } = body;
             // callback(undefined, `Temps: ${current.weather[0].description}. Il fait actuellement ${current.temp} degrés, resenti ${current.feels_like} degrés, le taux d'humidité est de ${current.humidity}%.`);
             console.log('pre dt');
-            const myForecast = readableForecast(body)
+            const forecastReadable = readableForecast(body)
             console.log('post dt');
             // callback(undefined, body);
-            callback(undefined, readableForecast);
+            callback(undefined, forecastReadable);
         }
     });
 };

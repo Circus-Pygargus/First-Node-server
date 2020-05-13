@@ -1,0 +1,16 @@
+/* ############## Fonts ############## */
+@font-face {
+  font-family: 'galyon';
+  src: url("/fonts/Galyon-Regular.otf");
+}
+
+@font-face {
+  font-family: 'galyon-italic';
+  src: url("/fonts/Galyon-Italic.otf");
+}
+
+@font-face {
+  font-family: 'galyon-bold';
+  src: url("/fonts/Galyon-Bold.otf");
+}
+/*# sourceMappingURL=fonts.css.map */

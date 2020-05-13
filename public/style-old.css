@@ -1,0 +1,143 @@
+body {
+    color: #333333;
+    font-family: arial;
+    max-width: 650px;
+    margin: 0 auto;
+    padding: 0 16px;
+
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 16px;
+    margin-bottom: 48px;
+}
+header h1 {
+    font-size: 64px;
+    margin-bottom: 16px;
+}
+header nav a {
+    color: #888888;
+    margin-right: 16px;
+    text-decoration: none;
+}
+header div:last-child {
+    align-self: flex-end;
+}
+
+main {
+    flex-grow: 1;
+}
+
+input {
+    border: 1px solid #cccccc;
+    padding: 8px;
+}
+
+button {
+    cursor: pointer;
+    background-color: #888888;
+    border: 1px solid #888888;
+    color: white;
+    padding: 8px;
+}
+
+img.portrait {
+    width: 260px;
+    height: 330px;
+}
+
+footer {
+    color: #888888;
+    border-top: 1px solid #eeeeee;
+    margin-top: 16px;
+    padding: 16px 0;
+}
+
+p#err-404 {
+    font-size: 100px;
+    text-align: center;
+    margin: 40px auto 30px;
+}
+p#message-404{
+    font-size: 50px;
+    text-align: center;
+    margin: 20px auto 30px;
+}
+.hidden {
+    display: none;
+
+}
+
+#weather-section {
+    text-align: center;
+}
+/* When user have to choose a location */
+#weather-places-div p {
+    font-size: 22px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+#weather-places {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#weather-places div {
+    margin-bottom: 16px;
+    padding: 16px;
+    background-color: #f9f9f9;
+    color: #0a0a0a;
+    border: 1px solid #cacaca;
+    cursor: pointer;
+}
+#weather-places div:hover {
+    border-color: #555555
+}
+#weather-places div.chosen {
+    background-color: #333333;
+    color: #cccccc;
+}
+
+/* weather forecast nav */
+.weather-nav-item {
+    display: inline-block;
+}
+
+
+#weather-current {
+    line-height: 20px;
+}
+.current-temp .temp {
+    display: inline-block;
+    font-size: 3rem;
+}
+.current-temp .feels-like {
+    display: inline-block;
+}
+.current-wind {
+    display: flex;
+    justify-content: center;
+}
+/* .wind-arrow {
+    width: 20px;
+    height: 20px;
+} */
+.arrow {
+    /* color: red; */
+    /* width: 640px; */
+    /* height: 640px; */
+    /* background-color: aqua; */
+    /* width: 100%;
+    height: 100%; */
+    width: 20px;
+    height: 20px;
+    background-image: url('../img/weather-app/weather-arrow.svg');
+    background-size: cover;
+    /* height: 0; */
+}

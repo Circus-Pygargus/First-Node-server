@@ -1,23 +1,50 @@
 <div id="weather-current">
 
+	{{!-- <h3>Temps Actuel</h3> --}}
+
+	<h3 id="currentDate">{{current.dayName}} {{current.dayNb}} {{current.month}}</h3>
+
+	<div class="current-temp">
+		<div class="temp">{{current.temp}}°C</div>
+		<div class="feels-like">resenti {{current.feels_like}}°C</div>
+	</div>
+
+	<div class="current-humidity">Humidité: {{current.humidity}}%</div>
+	<div class="current-coulds">Couverture nuageuse: {{current.clouds}}</div>
+	<div class="current-wind">
+		<div>
+			Vent: 
+			{{current.wind_speed}}km/h 
+			{{current.wind_direction}}
+		</div>
+		{{!-- <div class="wind-arrow"> --}}
+			<div class="arrow" style="transform-origin: center; transform: rotate({{current.wind_deg}}deg);">
+
+			</div>
+		{{!-- </div> --}}
+	</div>
+ {{!-- style="transform: rotate({{current.wind_deg}}deg);"--}}
+	{{#each current.weather}}
+		<div class="current-description">{{this.description}}</div>
+		<img class="current-picture" src="/img/weather-app/{{this.picture}}.gif" alt="{{this.picture}}">
+	{{/each}}
+
 </div>
 
-
-response.body.current = {
-  dt: 1588540144,       yes/no
-  sunrise: 1588479244,  yes
-  sunset: 1588531692,   yes
-  temp: 12.22,          yes
-  feels_like: 11.75,    yes
-  pressure: 1020,
-  humidity: 82,         yes
-  dew_point: 9.24,      
-  uvi: 7.05,
-  clouds: 94,           yes (%)
-  wind_speed: 0.45,     yes (m/s)
-  wind_deg: 248,        yes (°)
-  wind_gust: 2.68,
-  weather: [ { id: 804, main: 'Clouds', description: 'couvert', icon: '04n' } ]  yes 
-}
-
+{{!-- 
+    forecast.current = {
+        dayName: weekDayNames[dateTZ.getDay()],
+        dayNb: dateTZ.getDate(),
+        month: monthNames[dateTZ.getMonth()],
+        temp: Math.round(data.current.temp * 10) / 10,      // only one decimal digit
+        feels_like: Math.round(data.current.feels_like * 10) / 10,
+        humidity: data.current.humidity,
+        clouds: data.current.clouds,
+        wind_speed: convertWindSpeed(data.current.wind_speed),  // We want some km/h
+        wind_direction: getWindDirection(data.current.wind_deg),
+        weather: getWeatherDescriptions(data.current.weather),
+			description
+			picture
+    }
+ --}}
 

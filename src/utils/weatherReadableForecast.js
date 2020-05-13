@@ -20,6 +20,7 @@ const readableForecast = (data) => {
         humidity: data.current.humidity,
         clouds: data.current.clouds,
         wind_speed: convertWindSpeed(data.current.wind_speed),  // We want some km/h
+        wind_deg: data.current.wind_deg + 180,                  // + 180° or the arrow will point to where the wind come from 
         wind_direction: getWindDirection(data.current.wind_deg),
         weather: getWeatherDescriptions(data.current.weather),
     }
@@ -76,6 +77,13 @@ const readableForecast = (data) => {
             weather: getWeatherDescriptions(data.current.weather),
         }
     }
+    console.log('dt made')
+    // for (let i=0; i<data.current.weather.length; i++) {
+    //     console.log(data.current.weather[i].id)
+    // }
+    // console.log(forecast)
+    // console.log()
+    // console.log()
     return forecast
 }
 
@@ -124,8 +132,53 @@ const getWeatherDescriptions = (weather) => {
  * @return {string} weatherPicture - The picture name
  */
 const getPictureName = (weatherId) => {
-    const weatherPicture = 'weather-ico2.gif'
-    return weatherPicture
+    // const weatherPictures = ['grosse-pluie', 'faible-pluie', 'nuage-leger', 'soleil']
+    // const randomPic = Math.floor(Math.random() * weatherPictures.length)
+
+    var picture = ''
+    switch (true) {
+        case weatherId >= 200 && weatherId < 299: {
+            picture = `Pas d'image ici !`
+            break
+        }
+        case weatherId >= 300 && weatherId < 399: {
+            picture = `Pas d'image ici !`
+            break
+        }
+        case weatherId >= 500 && weatherId < 511: {
+            picture = `faible-pluie`
+            break
+        }
+        case weatherId >= 520 && weatherId < 599: {
+            picture = `grosse-pluie`
+            break
+        }
+        case weatherId >= 600 && weatherId < 699: {
+            picture = `Pas d'image ici !`
+            break
+        }
+        case weatherId >= 700 && weatherId < 799: {
+            picture = `Pas d'image ici !`
+            break
+        }
+        case weatherId >= 800 && weatherId < 802: {
+            picture = `soleil`
+            break
+        }
+        case weatherId >= 802 && weatherId < 803: {
+            picture = `nuage-leger`
+            break
+        }
+        case weatherId >= 803 && weatherId < 899: {
+            picture = `Pas d'image ici !`
+            break
+        }
+        default: 
+            picture = `Pas d'image ici !`
+    }
+
+// console.log(weatherPictures[randomPic])
+    return picture
 }
 
 

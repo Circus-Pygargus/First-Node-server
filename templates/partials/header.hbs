@@ -1,4 +1,4 @@
-<header>
+<header {{#if weatherSearch}}class="weather-form-included"{{/if}}>
 
     <div>
         <h1>{{title}}</h1>
@@ -10,6 +10,8 @@
         </nav>
     </div>
 
-    {{>weatherForm}}
+    {{#if weatherSearch}}
+        {{>weatherForm}}
+    {{/if}}
     
 </header>
