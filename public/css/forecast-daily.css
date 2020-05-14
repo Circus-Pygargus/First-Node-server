@@ -1,0 +1,8 @@
+#forecast-daily {
+  display: none;
+}
+
+#forecast-daily.active-forecast {
+  display: block;
+}
+/*# sourceMappingURL=forecast-daily.css.map */

@@ -15,6 +15,8 @@ const readableForecast = (data) => {
         dayName: weekDayNames[dateTZ.getDay()],
         dayNb: dateTZ.getDate(),
         month: monthNames[dateTZ.getMonth()],
+        hour: dateTZ.getHours(),
+        minute: dateTZ.getMinutes(),
         temp: Math.round(data.current.temp * 10) / 10,      // only one decimal digit
         feels_like: Math.round(data.current.feels_like * 10) / 10,
         humidity: data.current.humidity,

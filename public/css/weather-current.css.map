@@ -1,9 +1,0 @@
-{
-    "version": 3,
-    "mappings": "AAAA,aAAa;AAGb,AAAA,EAAE,CAAC;EACC,WAAW,EAAE,aAAa;EAC1B,KAAK,EAAC,kBAAkB;EACxB,UAAU,EAAE,MAAM;CACrB",
-    "sources": [
-        "weather-current.scss"
-    ],
-    "names": [],
-    "file": "weather-current.css"
-}

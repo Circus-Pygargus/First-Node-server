@@ -1,0 +1,52 @@
+/* weather forecast */
+#forecast {
+  width: 90%;
+  margin: 0 auto;
+  border: 1px solid var(--color-places-border);
+  padding: 16px 0 0 0;
+}
+
+#forecast h2 {
+  font-family: 'galyon-bold';
+  color: var(--color-primary);
+  text-align: center;
+}
+
+#forecast #forecast-nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  margin: 16px 0;
+}
+
+#forecast #forecast-nav .forecast-nav-item {
+  width: 25%;
+  height: 33px;
+  line-height: 30px;
+  background-color: transparent;
+  border: 2px solid var(--color-places-border);
+  border-radius: 50%;
+}
+
+#forecast #forecast-nav .forecast-nav-item.active-forecast {
+  color: var(--color-primary);
+}
+
+#forecast #forecast-nav .forecast-nav-item:hover {
+  border-color: var(--color-primary);
+}
+
+#forecast #forecast-nav .forecast-nav-item:active {
+  background-color: var(--color-primary);
+  color: white;
+  border-color: var(--color-places-border);
+}
+
+.arrow {
+  background-image: url("../img/weather-app/weather-arrow.svg");
+  background-size: cover;
+}
+/*# sourceMappingURL=forecast.css.map */

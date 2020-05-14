@@ -1,0 +1,23 @@
+<div id="forecast">
+
+    <h2>{{location}}</h2>
+
+    <div id="forecast-nav">
+        <div data-forecast="current" class="forecast-nav-item active-forecast">Actuelle</div>
+        <div data-forecast="hourly" class="forecast-nav-item">Par heure</div>
+        <div data-forecast="daily" class="forecast-nav-item">Par jour</div>
+    </div>
+    
+    {{!-- je lui ai viré id="forecast-content" car j'ai créé une classe du même nom, a-t-il vraiment besoin d'un id --}}
+    <div>
+        
+        {{>forecastCurrent}}
+    
+        {{>forecastHourly}}
+
+        {{>forecastDaily}}
+    </div>
+
+</div>
+
+{{!-- <script src="/js/forecastNav.js"></script> --}}

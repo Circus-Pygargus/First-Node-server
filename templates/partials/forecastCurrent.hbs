@@ -1,33 +1,32 @@
-<div id="weather-current">
+<div id="forecast-current" class="forecast-content active-forecast">
 
 	{{!-- <h3>Temps Actuel</h3> --}}
 
-	<h3 id="currentDate">{{current.dayName}} {{current.dayNb}} {{current.month}}</h3>
+	<div id="current-date-time">
+		<div class="date">{{current.dayName}} {{current.dayNb}} {{current.month}}</div>
+		<div class="time">{{current.hour}} h {{current.minute}}</div>
+	</div>
 
-	<div class="current-temp">
+	<div id="current-temp">
 		<div class="temp">{{current.temp}}°C</div>
 		<div class="feels-like">resenti {{current.feels_like}}°C</div>
 	</div>
+	
+	{{#each current.weather}}
+		<img class="current-picture" src="/img/weather-app/{{this.picture}}.gif" alt="{{this.picture}}">
+		<div class="current-description">{{this.description}}</div>
+	{{/each}}
 
-	<div class="current-humidity">Humidité: {{current.humidity}}%</div>
-	<div class="current-coulds">Couverture nuageuse: {{current.clouds}}</div>
-	<div class="current-wind">
+	<div id="current-humidity">Humidité: {{current.humidity}}%</div>
+	<div id="current-coulds">Couverture nuageuse: {{current.clouds}}</div>
+	<div id="current-wind">
 		<div>
 			Vent: 
 			{{current.wind_speed}}km/h 
 			{{current.wind_direction}}
 		</div>
-		{{!-- <div class="wind-arrow"> --}}
-			<div class="arrow" style="transform-origin: center; transform: rotate({{current.wind_deg}}deg);">
-
-			</div>
-		{{!-- </div> --}}
+			<div class="arrow" style="transform-origin: center; transform: rotate({{current.wind_deg}}deg);"></div>
 	</div>
- {{!-- style="transform: rotate({{current.wind_deg}}deg);"--}}
-	{{#each current.weather}}
-		<div class="current-description">{{this.description}}</div>
-		<img class="current-picture" src="/img/weather-app/{{this.picture}}.gif" alt="{{this.picture}}">
-	{{/each}}
 
 </div>
 

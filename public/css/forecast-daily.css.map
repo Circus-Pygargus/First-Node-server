@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AACA,AAAA,eAAe,CAAC;EACZ,OAAO,EAAE,IAAI;CAOhB;;AARD,AAGI,eAHW,AAGV,gBAAgB,CAAC;EACd,OAAO,EAAE,KAAK;CACjB",
+    "sources": [
+        "forecast-daily.scss"
+    ],
+    "names": [],
+    "file": "forecast-daily.css"
+}

@@ -1,0 +1,10 @@
+
+#forecast-hourly {
+    display: none;
+
+    &.active-forecast {
+        display: block;
+    }
+
+    
+}

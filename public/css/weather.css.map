@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,6CAA6C",
+    "sources": [
+        "weather.scss"
+    ],
+    "names": [],
+    "file": "weather.css"
+}

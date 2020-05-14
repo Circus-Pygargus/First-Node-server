@@ -21,7 +21,7 @@
 :root {
   --color-viok: #FF8800;
   --color-main: #333333;
-  --color-green: #26ff00;
+  --color-primary: #ff6600;
   --color-places-background: #f9f9f9;
   --color-places-color: #0a0a0a;
   --color-places-border: #cacaca;
@@ -190,10 +190,125 @@ footer {
   color: var(--color-places-chosen-color);
 }
 
-/* current */
-h2 {
+/* weather forecast */
+#forecast {
+  width: 90%;
+  margin: 0 auto;
+  border: 1px solid var(--color-places-border);
+  padding: 16px 0 0 0;
+}
+
+#forecast h2 {
   font-family: 'galyon-bold';
-  color: var(--color-green);
+  color: var(--color-primary);
   text-align: center;
+}
+
+#forecast #forecast-nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  margin: 16px 0;
+}
+
+#forecast #forecast-nav .forecast-nav-item {
+  width: 25%;
+  height: 33px;
+  line-height: 30px;
+  background-color: transparent;
+  border: 2px solid var(--color-places-border);
+  border-radius: 50%;
+}
+
+#forecast #forecast-nav .forecast-nav-item.active-forecast {
+  color: var(--color-primary);
+}
+
+#forecast #forecast-nav .forecast-nav-item:hover {
+  border-color: var(--color-primary);
+}
+
+#forecast #forecast-nav .forecast-nav-item:active {
+  background-color: var(--color-primary);
+  color: white;
+  border-color: var(--color-places-border);
+}
+
+.arrow {
+  background-image: url("../img/weather-app/weather-arrow.svg");
+  background-size: cover;
+}
+
+/* current */
+#forecast-current {
+  display: none;
+}
+
+#forecast-current.active-forecast {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+#current-date-time .date {
+  display: inline-block;
+  font-weight: 800;
+  font-size: 1.6rem;
+  margin-right: 16px;
+}
+
+#current-date-time .time {
+  display: inline-block;
+  font-size: 1.3rem;
+}
+
+#current-temp .temp {
+  display: inline-block;
+  font-size: 5rem;
+}
+
+#current-temp .feels-like {
+  display: inline-block;
+}
+
+.current-picture {
+  width: 100%;
+}
+
+#current-wind {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#current-wind .arrow {
+  width: 20px;
+  height: 20px;
+}
+
+#forecast-hourly {
+  display: none;
+}
+
+#forecast-hourly.active-forecast {
+  display: block;
+}
+
+#forecast-daily {
+  display: none;
+}
+
+#forecast-daily.active-forecast {
+  display: block;
 }
 /*# sourceMappingURL=style.css.map */

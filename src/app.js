@@ -135,7 +135,7 @@ app.get('/weather', (req, res) => {
                     // const forecast = forecastData
                     // forecast.location = placeName
 
-                    app.render(`${partialsPath}/weather`, {layout: false, location: placeName, forecast: forecastData}, (err, html) => {
+                    app.render(`${partialsPath}/forecast`, {layout: false, location: placeName, forecast: forecastData}, (err, html) => {
                         if (err) {
                             return res.send({
                                 error: 'Une erreur est survennue durant le rendu de la réponse.'
@@ -179,7 +179,7 @@ app.get('/weather', (req, res) => {
 const forecastToSave = {location: placeName, current, daily, hourly}
 manageForecast.save(forecastToSave)
             
-            app.render(`${partialsPath}/weather`, {layout: false, location: placeName, current, daily, hourly}, (err, html) => {
+            app.render(`${partialsPath}/forecast`, {layout: false, location: placeName, current, daily, hourly}, (err, html) => {
                 if (err) {
                     console.log('err', err)
                     return res.send({

@@ -1,0 +1,60 @@
+/* current */
+
+#forecast-current {
+    display: none;
+
+    &.active-forecast {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+#current-date-time {
+
+    .date {
+        display: inline-block;
+        font-weight: 800;
+        font-size: 1.6rem;
+        margin-right: 16px;
+    }
+    .time {
+        display: inline-block;
+        font-size: 1.3rem;
+    }
+}
+
+#current-temp {
+
+    .temp {
+        display: inline-block;
+        font-size: 5rem;
+    }
+
+    .feels-like {
+        display: inline-block;
+    }
+}
+
+.current-picture {
+    width: 100%;
+}
+
+#current-wind {
+    display: flex;
+    justify-content: center;
+
+    // svg background called in forecast.scss 
+    .arrow {    
+        width: 20px;
+        height: 20px;
+    }
+}
+
+
+
+
+    // @include landscapephone
+    // @include landscapephoneAndBigger 
+    // @include tablet
+    // @include desktop
+    // @include xldesktop 

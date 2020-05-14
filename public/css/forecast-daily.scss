@@ -1,0 +1,10 @@
+
+#forecast-daily {
+    display: none;
+
+    &.active-forecast {
+        display: block;
+    }
+
+    
+}

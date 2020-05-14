@@ -1,0 +1,8 @@
+#forecast-hourly {
+  display: none;
+}
+
+#forecast-hourly.active-forecast {
+  display: block;
+}
+/*# sourceMappingURL=forecast-hourly.css.map */
